@@ -2,7 +2,7 @@ from flask import Flask
 from threading import Thread
 import telegram_bot
 
-app = Flask('')
+app = Flask(__name__)
 
 @app.route('/')
 def home():
