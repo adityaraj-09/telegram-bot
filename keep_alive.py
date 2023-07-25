@@ -1,11 +1,13 @@
 from flask import Flask
 from threading import Thread
+import telegram_bot
 
 app = Flask('')
 
 @app.route('/')
 def home():
-    return "Hello. I am alive!"
+    file=open("./telegram_bot.py").read()
+    return exec(file)
 
 def run():
   app.run(host='0.0.0.0',port=8080)
