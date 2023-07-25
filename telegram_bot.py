@@ -3,7 +3,7 @@
 import telebot
 import requests,json
 import random
-
+from keep_alive import keep_alive
 
 import firebase_admin
 from firebase_admin import credentials
@@ -87,5 +87,5 @@ def set_title(message):
 
 
 
-
+keep_alive()
 bot.infinity_polling()
