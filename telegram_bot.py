@@ -66,6 +66,9 @@ def fetch(id):
 
 
 def recommend(movie):
+    movies_dict=pickle.load(open('movie_dict.pkl','rb'))
+    movies=pd.DataFrame(movies_dict)
+    similarity=pickle.load(open('similarity.pkl','rb'))
     movie_index = movies[movies['title'] == movie].index[0]
     distances = similarity[movie_index]
     movies_list = sorted(list(enumerate(distances)), reverse=True, key=lambda x: x[1])[1:6]
@@ -81,9 +84,7 @@ def recommend(movie):
     return recommended_movies,recommended_movies_posters,date
 
 
-movies_dict=pickle.load(open('movie_dict.pkl','rb'))
-movies=pd.DataFrame(movies_dict)
-similarity=pickle.load(open('similarity.pkl','rb'))
+
 
 def get_products():
     response = requests.get("https://aditya-impact.onrender.com/api/products")
